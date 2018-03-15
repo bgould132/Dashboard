@@ -1,0 +1,17 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Interactive dashboard for visualizing & analyzing utility consumption from DataSF",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Gould",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "d3": "^4.13.0",
+    "fs": "0.0.1-security",
+    "jquery": "^3.3.1"
+  }
+}
