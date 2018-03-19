@@ -19,20 +19,33 @@ var i = 0, k = 0, item,
     consumption, consumption_imported, electricity, gas, water,
     electricityDats, gasDats, waterDats,
     electricDatsColors, gasDatsColors, waterDatsColors,
+    electricTarget, gasTarget, waterTarget,
     year, yearsList = ["2013", "2014", "2015", "2016", "2017"],
+    monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
     // Chart variables
-    chartsList = ["electricityChart", "gasChart", "waterChart"], 
+    chartsMap = {},
     chartType = 'line',
-
+    chartsList = ["electricityChart", "gasChart", "waterChart"],
+    chartNames = {
+        "electricityChart": "Electricty (GWh)",
+        "gasChart": "Natural Gas (Therms)",
+        "waterChart": "Water (Units)"
+    },
     //Constructors
     UtilityObj,
     ElectricityObj,
     GasObj,
     WaterObj;
 
-electricDatsColors = ["#000000", "#ffffb3","#ffff66", "#ffff33","#ffff00"];
-gasDatsColors = ["#000000", "#ffcccc","#ff8080", "#ff3333","#ff0000"];
-waterDatsColors = ["#000000", "#e6e6ff","#8080ff", "#4d4dff","#0000ff"];
+chartsMap = {
+    "electricityChart": 0,
+    "gasChart": 0,
+    "waterChart": 0
+};
+
+electricDatsColors = ["#000000", "#d9f2d9","#b3e6b3", "#66cc66","#339933", "#808080"];
+gasDatsColors = ["#000000", "#ffcccc","#ff9999", "#ff3333","#cc0000", "#808080"];
+waterDatsColors = ["#000000", "#ccccff","#9999ff", "#3333ff","#0000cc", "#808080"];
 
 // Constructors 
 // ******************************************************************//
@@ -112,12 +125,19 @@ water = new UtilityObj;
 waterDats = new UtilityObj;
 
 // use Charts.js to build main charts
-function mainChartInit(chartID, dats, datsColors) {
+function chartInit(chartID, dats, datsColors, target) {
+    var targetDats = [], q = 0;
+    
+    for (var counter in dats["2013"]) {
+        targetDats[q] = dats["2013"][counter]*target;
+        q++;
+    }
+    
     var ctx = document.getElementById(chartID);
-    var myChart = new Chart(ctx, {
+    chartsMap[chartID] = new Chart(ctx, {
         type: chartType,
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            labels: monthList,
             datasets: [{
                 label: "2013",
                 data: dats["2013"],
@@ -131,6 +151,7 @@ function mainChartInit(chartID, dats, datsColors) {
                label: "2014",
                 data: dats["2014"],
                 lineTension: 0,
+               hidden: true,
                 backgroundColor: 'transparent',
                 borderColor: datsColors[1],
                 borderWidth: 1,
@@ -140,6 +161,7 @@ function mainChartInit(chartID, dats, datsColors) {
                label: "2015",
                 data: dats["2015"],
                 lineTension: 0,
+               hidden: true,
                 backgroundColor: 'transparent',
                 borderColor: datsColors[2],
                 borderWidth: 1,
@@ -149,6 +171,7 @@ function mainChartInit(chartID, dats, datsColors) {
                label: "2016",
                 data: dats["2016"],
                 lineTension: 0,
+               hidden: true,
                 backgroundColor: 'transparent',
                 borderColor: datsColors[3],
                 borderWidth: 1,
@@ -162,7 +185,17 @@ function mainChartInit(chartID, dats, datsColors) {
                 borderColor: datsColors[4],
                 borderWidth: 1,
                 pointBackgroundColor: datsColors[4]
-            }]
+            },
+           {
+                label: "Target",
+                data: targetDats,
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: datsColors[5],
+                borderWidth: 1,
+                borderDash: [5,5],
+                pointBackgroundColor: datsColors[5]
+            },]
         },
         options: {
             layout: {
@@ -171,10 +204,41 @@ function mainChartInit(chartID, dats, datsColors) {
                     right: 20
                 }
             },
+            title: {
+                display: true,
+                text: chartNames[chartID]
+            },
+            tooltips: {
+                // Add commas to tooltips
+                callbacks: {
+                    title: function(tooltipItem, data) {
+                        return tooltipItem[0].xLabel + " " + data.datasets[tooltipItem[0].datasetIndex].label;
+                    },
+                    label: function(tooltipItem, data) {
+                        // FIX THIS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                        console.log(data);
+                        console.log(tooltipItem);
+                        if(parseInt(value) >= 1000){
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        } else {
+                           return value;
+                        }
+                    }
+                }
+            },
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: false
+                        beginAtZero: false,
+                        // Add commas tp scale bars
+                        callback: function(value, index, values) {
+                            if(parseInt(value) >= 1000){
+                               return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            } else {
+                               return value;
+                            }
+                       }     
                     }
                 }]
             },
@@ -184,6 +248,11 @@ function mainChartInit(chartID, dats, datsColors) {
         }
     });
     ctx.style.backgroundColor = "#fff";
+}
+
+function chartDestroy(chartID) {
+    var ctx = document.getElementById(chartID);
+    ctx.chart.destroy();
 }
 
 $.when(
@@ -220,8 +289,31 @@ $.when(
         
     }
     
-    mainChartInit("electricityChart", electricityDats, electricDatsColors);
-    mainChartInit("gasChart", gasDats, gasDatsColors);
-    mainChartInit("waterChart", waterDats, waterDatsColors);
+    electricTarget = gasTarget = waterTarget = 0.9; 
+    
+    chartInit("electricityChart", electricityDats, electricDatsColors, electricTarget);
+    chartInit("gasChart", gasDats, gasDatsColors, gasTarget);
+    chartInit("waterChart", waterDats, waterDatsColors, waterTarget);
+    
 })
 
+function typeToggle(type) {
+    chartType = type;
+    
+    for (i = 0; i < chartsList.length; i++) {
+        chartsMap[chartsList[i]].destroy();
+    }
+    
+    chartInit("electricityChart", electricityDats, electricDatsColors, electricTarget);
+    chartInit("gasChart", gasDats, gasDatsColors, gasTarget);
+    chartInit("waterChart", waterDats, waterDatsColors, waterTarget);
+    
+    if (type === 'bar') {
+        for (i = 0; i < chartsList.length; i++) {
+            chartsMap[chartsList[i]].data.datasets.forEach((dataset) => {
+            dataset.backgroundColor = dataset.borderColor;
+            });
+            chartsMap[chartsList[i]].update();
+        }
+    }
+}

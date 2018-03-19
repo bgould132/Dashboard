@@ -8,13 +8,13 @@
 
 .electricity-bg {
     background-clip: content-box;
-    background-color: whitesmoke;
+    background-color: #bfd9bf;
     padding: 10px;
 }
 
 .gas-bg {
     background-clip: content-box;
-    background-color: pink;
+    background-color: #ffccd5;
     padding: 10px;
 }
 
