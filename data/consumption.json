@@ -1,6 +1,7 @@
 [
     {
-        "Month": "1/1/2013",
+        "Year": "2013",
+        "Month": "1",
         "SFIA Direct(kWh)": 12904353,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5120,
@@ -65,7 +66,8 @@
         "Billing": 226788
     },
     {
-        "Month": "2/1/2013",
+        "Year": "2013",
+        "Month": "2",
         "SFIA Direct(kWh)": 11816401,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5360,
@@ -130,7 +132,8 @@
         "Billing": 224312
     },
     {
-        "Month": "3/1/2013",
+        "Year": "2013",
+        "Month": "3",
         "SFIA Direct(kWh)": 13769470,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -195,7 +198,8 @@
         "Billing": 227562
     },
     {
-        "Month": "4/1/2013",
+        "Year": "2013",
+        "Month": "4",
         "SFIA Direct(kWh)": 13477167,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -260,7 +264,8 @@
         "Billing": 260114
     },
     {
-        "Month": "5/1/2013",
+        "Year": "2013",
+        "Month": "5",
         "SFIA Direct(kWh)": 14525147,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -325,7 +330,8 @@
         "Billing": 254117
     },
     {
-        "Month": "6/1/2013",
+        "Year": "2013",
+        "Month": "6",
         "SFIA Direct(kWh)": 13983776,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 8080,
@@ -390,7 +396,8 @@
         "Billing": 263579
     },
     {
-        "Month": "7/1/2013",
+        "Year": "2013",
+        "Month": "7",
         "SFIA Direct(kWh)": 14510485,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 4480,
@@ -455,7 +462,8 @@
         "Billing": 282580
     },
     {
-        "Month": "8/1/2013",
+        "Year": "2013",
+        "Month": "8",
         "SFIA Direct(kWh)": 15376577,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 0,
@@ -520,7 +528,8 @@
         "Billing": 278973
     },
     {
-        "Month": "9/1/2013",
+        "Year": "2013",
+        "Month": "9",
         "SFIA Direct(kWh)": 14474661,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5360,
@@ -585,7 +594,8 @@
         "Billing": 269292
     },
     {
-        "Month": "10/1/2013",
+        "Year": "2013",
+        "Month": "10",
         "SFIA Direct(kWh)": 14438314,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5360,
@@ -650,7 +660,8 @@
         "Billing": 250581
     },
     {
-        "Month": "11/1/2013",
+        "Year": "2013",
+        "Month": "11",
         "SFIA Direct(kWh)": 13632489,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 6080,
@@ -715,7 +726,8 @@
         "Billing": 231200
     },
     {
-        "Month": "12/1/2013",
+        "Year": "2013",
+        "Month": "12",
         "SFIA Direct(kWh)": 13874497,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5120,
@@ -780,7 +792,8 @@
         "Billing": 228292
     },
     {
-        "Month": "1/1/2014",
+        "Year": "2014",
+        "Month": "1",
         "SFIA Direct(kWh)": 14224438,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -845,7 +858,8 @@
         "Billing": 228595
     },
     {
-        "Month": "2/1/2014",
+        "Year": "2014",
+        "Month": "2",
         "SFIA Direct(kWh)": 11307151,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -910,7 +924,8 @@
         "Billing": 225611
     },
     {
-        "Month": "3/1/2014",
+        "Year": "2014",
+        "Month": "3",
         "SFIA Direct(kWh)": 14217248,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5920,
@@ -975,7 +990,8 @@
         "Billing": 231479
     },
     {
-        "Month": "4/1/2014",
+        "Year": "2014",
+        "Month": "4",
         "SFIA Direct(kWh)": 13156039,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 3840,
@@ -1040,7 +1056,8 @@
         "Billing": 253733
     },
     {
-        "Month": "5/1/2014",
+        "Year": "2014",
+        "Month": "5",
         "SFIA Direct(kWh)": 14526902,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5520,
@@ -1105,7 +1122,8 @@
         "Billing": 219958
     },
     {
-        "Month": "6/1/2014",
+        "Year": "2014",
+        "Month": "6",
         "SFIA Direct(kWh)": 13735745,
         "Data Center (kWh)": 0,
         "Community College (kWh)": 5520,
@@ -1170,7 +1188,8 @@
         "Billing": 294663
     },
     {
-        "Month": "7/1/2014",
+        "Year": "2014",
+        "Month": "7",
         "SFIA Direct(kWh)": 14871822,
         "Data Center (kWh)": 41342,
         "Community College (kWh)": 5920,
@@ -1235,7 +1254,8 @@
         "Billing": 311763
     },
     {
-        "Month": "8/1/2014",
+        "Year": "2014",
+        "Month": "8",
         "SFIA Direct(kWh)": 14809519,
         "Data Center (kWh)": 53051,
         "Community College (kWh)": 4320,
@@ -1300,7 +1320,8 @@
         "Billing": 292277
     },
     {
-        "Month": "9/1/2014",
+        "Year": "2014",
+        "Month": "9",
         "SFIA Direct(kWh)": 14836903,
         "Data Center (kWh)": 51973,
         "Community College (kWh)": 5840,
@@ -1365,7 +1386,8 @@
         "Billing": 277181
     },
     {
-        "Month": "10/1/2014",
+        "Year": "2014",
+        "Month": "10",
         "SFIA Direct(kWh)": 15358398,
         "Data Center (kWh)": 52874,
         "Community College (kWh)": 4560,
@@ -1430,7 +1452,8 @@
         "Billing": 266875
     },
     {
-        "Month": "11/1/2014",
+        "Year": "2014",
+        "Month": "11",
         "SFIA Direct(kWh)": 13827951,
         "Data Center (kWh)": 49893,
         "Community College (kWh)": 5520,
@@ -1495,7 +1518,8 @@
         "Billing": 229710
     },
     {
-        "Month": "12/1/2014",
+        "Year": "2014",
+        "Month": "12",
         "SFIA Direct(kWh)": 14312434,
         "Data Center (kWh)": 50829,
         "Community College (kWh)": 4960,
@@ -1560,7 +1584,8 @@
         "Billing": 214739
     },
     {
-        "Month": "1/1/2015",
+        "Year": "2015",
+        "Month": "1",
         "SFIA Direct(kWh)": 13621017,
         "Data Center (kWh)": 51265,
         "Community College (kWh)": 4960,
@@ -1625,7 +1650,8 @@
         "Billing": 219674
     },
     {
-        "Month": "2/1/2015",
+        "Year": "2015",
+        "Month": "2",
         "SFIA Direct(kWh)": 11458825,
         "Data Center (kWh)": 48831,
         "Community College (kWh)": 5360,
@@ -1690,7 +1716,8 @@
         "Billing": 240640
     },
     {
-        "Month": "3/1/2015",
+        "Year": "2015",
+        "Month": "3",
         "SFIA Direct(kWh)": 14206768,
         "Data Center (kWh)": 55165,
         "Community College (kWh)": 5360,
@@ -1755,7 +1782,8 @@
         "Billing": 224527
     },
     {
-        "Month": "4/1/2015",
+        "Year": "2015",
+        "Month": "4",
         "SFIA Direct(kWh)": 13206035,
         "Data Center (kWh)": 52866,
         "Community College (kWh)": 5440,
@@ -1820,7 +1848,8 @@
         "Billing": 241186
     },
     {
-        "Month": "5/1/2015",
+        "Year": "2015",
+        "Month": "5",
         "SFIA Direct(kWh)": 13843250,
         "Data Center (kWh)": 53633,
         "Community College (kWh)": 4880,
@@ -1885,7 +1914,8 @@
         "Billing": 224915
     },
     {
-        "Month": "6/1/2015",
+        "Year": "2015",
+        "Month": "6",
         "SFIA Direct(kWh)": 13996653,
         "Data Center (kWh)": 54176,
         "Community College (kWh)": 2160,
@@ -1950,7 +1980,8 @@
         "Billing": 251131
     },
     {
-        "Month": "7/1/2015",
+        "Year": "2015",
+        "Month": "7",
         "SFIA Direct(kWh)": 15584561,
         "Data Center (kWh)": 58470,
         "Community College (kWh)": 2240,
@@ -2015,7 +2046,8 @@
         "Billing": 286730
     },
     {
-        "Month": "8/1/2015",
+        "Year": "2015",
+        "Month": "8",
         "SFIA Direct(kWh)": 15256051,
         "Data Center (kWh)": 59729,
         "Community College (kWh)": 2160,
@@ -2080,7 +2112,8 @@
         "Billing": 290662
     },
     {
-        "Month": "9/1/2015",
+        "Year": "2015",
+        "Month": "9",
         "SFIA Direct(kWh)": 15796725,
         "Data Center (kWh)": 59537,
         "Community College (kWh)": 9760,
@@ -2145,7 +2178,8 @@
         "Billing": 278410
     },
     {
-        "Month": "10/1/2015",
+        "Year": "2015",
+        "Month": "10",
         "SFIA Direct(kWh)": 16421214,
         "Data Center (kWh)": 60676,
         "Community College (kWh)": 4080,
@@ -2210,7 +2244,8 @@
         "Billing": 277364
     },
     {
-        "Month": "11/1/2015",
+        "Year": "2015",
+        "Month": "11",
         "SFIA Direct(kWh)": 12641431,
         "Data Center (kWh)": 57729,
         "Community College (kWh)": 5840,
@@ -2275,7 +2310,8 @@
         "Billing": 231218
     },
     {
-        "Month": "12/1/2015",
+        "Year": "2015",
+        "Month": "12",
         "SFIA Direct(kWh)": 13697268,
         "Data Center (kWh)": 56789,
         "Community College (kWh)": 5680,
@@ -2340,7 +2376,8 @@
         "Billing": 236219
     },
     {
-        "Month": "1/1/2016",
+        "Year": "2016",
+        "Month": "1",
         "SFIA Direct(kWh)": 13613693,
         "Data Center (kWh)": 59344,
         "Community College (kWh)": 5680,
@@ -2405,7 +2442,8 @@
         "Billing": 234171
     },
     {
-        "Month": "2/1/2016",
+        "Year": "2016",
+        "Month": "2",
         "SFIA Direct(kWh)": 13207312,
         "Data Center (kWh)": 54886,
         "Community College (kWh)": 5040,
@@ -2470,7 +2508,8 @@
         "Billing": 255052
     },
     {
-        "Month": "3/1/2016",
+        "Year": "2016",
+        "Month": "3",
         "SFIA Direct(kWh)": 14846883,
         "Data Center (kWh)": 58507,
         "Community College (kWh)": 5920,
@@ -2535,7 +2574,8 @@
         "Billing": 255507
     },
     {
-        "Month": "4/1/2016",
+        "Year": "2016",
+        "Month": "4",
         "SFIA Direct(kWh)": 13512898,
         "Data Center (kWh)": 60078,
         "Community College (kWh)": 6480,
@@ -2600,7 +2640,8 @@
         "Billing": 274972
     },
     {
-        "Month": "5/1/2016",
+        "Year": "2016",
+        "Month": "5",
         "SFIA Direct(kWh)": 14555166,
         "Data Center (kWh)": 58329,
         "Community College (kWh)": 6160,
@@ -2665,7 +2706,8 @@
         "Billing": 295271
     },
     {
-        "Month": "6/1/2016",
+        "Year": "2016",
+        "Month": "6",
         "SFIA Direct(kWh)": 14114695,
         "Data Center (kWh)": 59715,
         "Community College (kWh)": 6160,
@@ -2730,7 +2772,8 @@
         "Billing": 314437
     },
     {
-        "Month": "7/1/2016",
+        "Year": "2016",
+        "Month": "7",
         "SFIA Direct(kWh)": 14064108,
         "Data Center (kWh)": 63707,
         "Community College (kWh)": 6080,
@@ -2795,7 +2838,8 @@
         "Billing": 358175
     },
     {
-        "Month": "8/1/2016",
+        "Year": "2016",
+        "Month": "8",
         "SFIA Direct(kWh)": 14784511,
         "Data Center (kWh)": 58767,
         "Community College (kWh)": 5920,
@@ -2860,7 +2904,8 @@
         "Billing": 342314
     },
     {
-        "Month": "9/1/2016",
+        "Year": "2016",
+        "Month": "9",
         "SFIA Direct(kWh)": 14028224,
         "Data Center (kWh)": 62456,
         "Community College (kWh)": 6160,
@@ -2925,7 +2970,8 @@
         "Billing": 332045
     },
     {
-        "Month": "10/1/2016",
+        "Year": "2016",
+        "Month": "10",
         "SFIA Direct(kWh)": 14588262,
         "Data Center (kWh)": 66552,
         "Community College (kWh)": 4960,
@@ -2990,7 +3036,8 @@
         "Billing": 344871
     },
     {
-        "Month": "11/1/2016",
+        "Year": "2016",
+        "Month": "11",
         "SFIA Direct(kWh)": 13491817,
         "Data Center (kWh)": 80616,
         "Community College (kWh)": 5360,
@@ -3055,7 +3102,8 @@
         "Billing": 303545
     },
     {
-        "Month": "12/1/2016",
+        "Year": "2016",
+        "Month": "12",
         "SFIA Direct(kWh)": 13737470,
         "Data Center (kWh)": 61304,
         "Community College (kWh)": 4880,
@@ -3120,7 +3168,8 @@
         "Billing": 385943
     },
     {
-        "Month": "1/1/2017",
+        "Year": "2017",
+        "Month": "1",
         "SFIA Direct(kWh)": 13192247,
         "Data Center (kWh)": 70700,
         "Community College (kWh)": 4880,
@@ -3185,7 +3234,8 @@
         "Billing": 261119
     },
     {
-        "Month": "2/1/2017",
+        "Year": "2017",
+        "Month": "2",
         "SFIA Direct(kWh)": 11824927,
         "Data Center (kWh)": 67856,
         "Community College (kWh)": 5760,
@@ -3250,7 +3300,8 @@
         "Billing": 276863
     },
     {
-        "Month": "3/1/2017",
+        "Year": "2017",
+        "Month": "3",
         "SFIA Direct(kWh)": 13957401,
         "Data Center (kWh)": 66772,
         "Community College (kWh)": 4720,
@@ -3315,7 +3366,8 @@
         "Billing": 303822
     },
     {
-        "Month": "4/1/2017",
+        "Year": "2017",
+        "Month": "4",
         "SFIA Direct(kWh)": 12854721,
         "Data Center (kWh)": 69282,
         "Community College (kWh)": 6080,
@@ -3380,7 +3432,8 @@
         "Billing": 276995
     },
     {
-        "Month": "5/1/2017",
+        "Year": "2017",
+        "Month": "5",
         "SFIA Direct(kWh)": 13895196,
         "Data Center (kWh)": 71111,
         "Community College (kWh)": 7040,
@@ -3445,7 +3498,8 @@
         "Billing": 366383
     },
     {
-        "Month": "6/1/2017",
+        "Year": "2017",
+        "Month": "6",
         "SFIA Direct(kWh)": 13412352,
         "Data Center (kWh)": 66832,
         "Community College (kWh)": 14320,
@@ -3510,7 +3564,8 @@
         "Billing": 412296
     },
     {
-        "Month": "7/1/2017",
+        "Year": "2017",
+        "Month": "7",
         "SFIA Direct(kWh)": 14417693,
         "Data Center (kWh)": 75291,
         "Community College (kWh)": 5460,
@@ -3575,7 +3630,8 @@
         "Billing": 372166
     },
     {
-        "Month": "8/1/2017",
+        "Year": "2017",
+        "Month": "8",
         "SFIA Direct(kWh)": 15380441,
         "Data Center (kWh)": 72238,
         "Community College (kWh)": 5760,
@@ -3640,7 +3696,8 @@
         "Billing": 447115
     },
     {
-        "Month": "9/1/2017",
+        "Year": "2017",
+        "Month": "9",
         "SFIA Direct(kWh)": 15512367,
         "Data Center (kWh)": 72999,
         "Community College (kWh)": 10320,
@@ -3705,7 +3762,8 @@
         "Billing": 405768
     },
     {
-        "Month": "10/1/2017",
+        "Year": "2017",
+        "Month": "10",
         "SFIA Direct(kWh)": 14399437,
         "Data Center (kWh)": 64302,
         "Community College (kWh)": 9920,
@@ -3770,7 +3828,8 @@
         "Billing": 353448
     },
     {
-        "Month": "11/1/2017",
+        "Year": "2017",
+        "Month": "11",
         "SFIA Direct(kWh)": 13558540,
         "Data Center (kWh)": 67335,
         "Community College (kWh)": 10480,
@@ -3835,7 +3894,8 @@
         "Billing": 390559
     },
     {
-        "Month": "12/1/2017",
+        "Year": "2017",
+        "Month": "12",
         "SFIA Direct(kWh)": 13452456,
         "Data Center (kWh)": 67315,
         "Community College (kWh)": 9922,

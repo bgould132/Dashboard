@@ -4,7 +4,11 @@
  */
 
 //'use strict';
-/*jslint plusplus: true */
+/* jslint browser: true */
+/* jslint plusplus: true */
+/* eslint no-unused-vars: ["error", {"args": "none"}] */
+/* eslint no-console: ["error", {allow: ["log"]}] */
+/* eslint-env browser*/
 
 /*
 var fs = require('fs');
@@ -15,7 +19,7 @@ var interpolate = require('color-interpolate);
 */
 
 
-var i = 0, k = 0, item,
+var i = 0, k = 0,
     consumption, consumption_imported, electricity, gas, water,
     electricityDats, gasDats, waterDats,
     electricDatsColors, gasDatsColors, waterDatsColors,
@@ -43,9 +47,9 @@ chartsMap = {
     "waterChart": 0
 };
 
-electricDatsColors = ["#000000", "#d9f2d9","#b3e6b3", "#66cc66","#339933", "#808080"];
-gasDatsColors = ["#000000", "#ffcccc","#ff9999", "#ff3333","#cc0000", "#808080"];
-waterDatsColors = ["#000000", "#ccccff","#9999ff", "#3333ff","#0000cc", "#808080"];
+electricDatsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
+gasDatsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
+waterDatsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
 
 // Constructors 
 // ******************************************************************//
@@ -56,7 +60,7 @@ UtilityObj = function UtilityObj() {
     this["2016"] = [];
     this["2017"] = [];
     //this["2018"] = [];
-}
+};
 
 ElectricityObj = function ElectricityObj() {
     this["SFIA Direct(kWh)"] = 0;
@@ -70,7 +74,7 @@ ElectricityObj = function ElectricityObj() {
     this["Airport + Data Center + Community College Total (kWh)"] = 0;
     this["Tenant Total (kWh)"] = 0;
     this["Sum of Total (kWh)"] = 0;
-}
+};
 
 GasObj = function GasObj() {
     this["Sum of Total ($)"] = 0;
@@ -81,14 +85,14 @@ GasObj = function GasObj() {
     this["Non-Terminal Gas (Therms)"] = 0;
     this["Total (Therms)"] = 0;
     this["Total (kWh)"] = 0;
-}
+};
 
 WaterObj = function WaterObj() {
-    this["Domestic"] = 0;
+    this.Domestic = 0;
     this["Double-counting Adjustment"] = 0;
     this["Domestic (Adjusted)"] = 0;
     this["Cooling Tower"] = 0;
-    this["Irrigation"] = 0;
+    this.Irrigation = 0;
     this["Sewage Treatment"] = 0;
     this["Construction/Hydrant"] = 0;
     this["General Maintenance"] = 0;
@@ -96,15 +100,15 @@ WaterObj = function WaterObj() {
     this["United Hub"] = 0;
     this["United T3 Hub"] = 0;
     this["United  GSE"] = 0;
-    this["Hertz"] = 0;
+    this.Hertz = 0;
     this["Gate Gourmet"] = 0;
     this["Post Office"] = 0;
     this["Rental Car Agencies"] = 0;
     this["Other Tenants"] = 0;
     this["All Rental Car"] = 0;
     this["Fire Protection/Maintenance"] = 0;
-    this["Flushing"] = 0;
-    this["Leakage"] = 0;
+    this.Flushing = 0;
+    this.Leakage = 0;
     this["Airport Subtotal"] = 0;
     this["Airport Subtotal (Adjusted)"] = 0;
     this["Airport Sub Net RSA"] = 0;
@@ -115,14 +119,14 @@ WaterObj = function WaterObj() {
     this["Total (Sum of Subtotal)"] = 0;
     this["Normalized Days"] = 0;
     this["Days in Billing Cycle"] = 0;
-}
+};
 
-electricity = new UtilityObj;
-electricityDats = new UtilityObj;
-gas = new UtilityObj;
-gasDats = new UtilityObj;
-water = new UtilityObj;
-waterDats = new UtilityObj;
+electricity = new UtilityObj();
+electricityDats = new UtilityObj();
+gas = new UtilityObj();
+gasDats = new UtilityObj();
+water = new UtilityObj();
+waterDats = new UtilityObj();
 
 // use Charts.js to build main charts
 function chartInit(chartID, dats, datsColors, target) {
@@ -365,8 +369,8 @@ function typeToggle(type) {
     
     if (type === 'bar') {
         for (i = 0; i < chartsList.length; i++) {
-            chartsMap[chartsList[i]].data.datasets.forEach((dataset) => {
-            dataset.backgroundColor = dataset.borderColor;
+            chartsMap[chartsList[i]].data.datasets.forEach(function (dataset) {
+                dataset.backgroundColor = dataset.borderColor;                
             });
             chartsMap[chartsList[i]].update();
         }
