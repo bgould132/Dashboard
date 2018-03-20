@@ -41,21 +41,96 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4 electricity-bg">
+                    <div class="row" id="charts">
+                        <div class="col-lg-4 electricity-bg" id="electricity">
                             <img src="img/green_energy_2.png" class="icon">
                             <canvas class="chart" id="electricityChart"></canvas>
-                            <p>Electricity Column</p>
+                            <div class="card mx-2 my-4 p-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                            Total Electricity: <span id="eYTD"></span>
+                                        <br>2013 Electricity:
+                                        <br>Equivalent To:
+                                    </div>
+                                    <div class="col-6">
+                                        <canvas class="gauge" id="electricityGauge"></canvas>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <button class="btn" data-toggle="collapse" data-target="#collapseElectricity" aria-expanded="false" aria-control="collapseElectricity">
+                                Expand Panel Electricity
+                            </button>
                         </div>
-                        <div class="col-lg-4 gas-bg">
+                        <div class="col-lg-4 gas-bg" id="gas">
                             <img src="img/flame.png" class="icon">
                             <canvas class="chart" id="gasChart"></canvas>
-                            <p>Gas Column</p>
+                            <div class="card mx-2 my-4 p-3">
+                                <div class="row">
+                                    <div class="col-6">                                    
+                                            Total Gas: <span id="eYTD"></span>
+                                        <br>2013 Gas:
+                                        <br>Equivalent To:
+                                    </div>
+                                    <div class="col-6">
+                                        <canvas class="gauge" id="gasGauge"></canvas>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <button class="btn mx-auto" style="width: 10rem;" data-toggle="collapse" data-target="#collapseGas" aria-expanded="false" aria-control="collapseGas">
+                                Expand Panel Gas
+                            </button>
                         </div>
-                        <div class="col-lg-4 align-content-center water-bg">
+                        <div class="col-lg-4 align-content-center water-bg" id="water">
                             <img src="img/water.png" class="icon">
                             <canvas class="chart" id="waterChart"></canvas>
-                            <p>Water Column</p>
+                            <div class="card mx-2 my-4 p-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                            Total Water: <span id="eYTD"></span>
+                                        <br>2013 Water:
+                                        <br>Equivalent To:
+                                    </div>
+                                    <div class="col-6">
+                                        <canvas class="gauge" id="waterGauge"></canvas>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <button class="btn mx-auto" data-toggle="collapse" data-target="#collapseWater" aria-expanded="false" aria-control="collapseWater">
+                                Expand Panel Water
+                            </button>
+                        </div>                        
+                        <div id="collapseElectricity" class="collapse electricity-bg col-12" aria-labelledby="electricity" data-parent="#charts">
+                            <div class="row">
+                                <div class="col-6">
+                                    <canvas class="chart" id="sfiaElectricityChart"></canvas>
+                                    <canvas class="chart" id="tenantElectricityChart"></canvas>
+                                </div>
+                                <div class="col-6">
+                                    <p>Test panel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseGas" class="collapse gas-bg col-12" aria-labelledby="gas" data-parent="#charts">
+                            <div class="row">
+                                <div class="col-6">
+                                    <canvas class="chart" id="gasLocationChart"></canvas>
+                                    <canvas class="chart" id="campusGasChart"></canvas>
+                                </div>
+                                <div class="col-6">
+                                    <p>Test panel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseWater" class="collapse water-bg col-12" aria-labelledby="water" data-parent="#charts">
+                            <div class="row">
+                                <div class="col-6">
+                                    <canvas class="chart" id="campusWaterChart"></canvas>
+                                    <canvas class="chart" id="tenantWaterChart"></canvas>
+                                </div>
+                                <div class="col-6">
+                                    <p>Test panel</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -71,6 +146,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="http://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
         
         <!-- Icons -->
         <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

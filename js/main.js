@@ -27,9 +27,9 @@ var i = 0, k = 0, item,
     chartType = 'line',
     chartsList = ["electricityChart", "gasChart", "waterChart"],
     chartNames = {
-        "electricityChart": "Electricty (GWh)",
-        "gasChart": "Natural Gas (Therms)",
-        "waterChart": "Water (Units)"
+        "electricityChart": "Campuswide Electricty (GWh)",
+        "gasChart": "Campuswide Natural Gas (Therms)",
+        "waterChart": "Campuswide Water (MG)"
     },
     //Constructors
     UtilityObj,
@@ -250,9 +250,60 @@ function chartInit(chartID, dats, datsColors, target) {
     ctx.style.backgroundColor = "#fff";
 }
 
+// use Charts.js to destroy any chart
 function chartDestroy(chartID) {
     var ctx = document.getElementById(chartID);
     ctx.chart.destroy();
+}
+
+// use gauge.js to create gauge by ID
+function gaugeInit(gaugeID, dats) {
+    var opts = {
+        angle: 0.0, // The span of the gauge arc
+        lineWidth: 0.35, // The line thickness
+        radiusScale: .75, // Relative radius
+        pointer: {
+            length: 0.6, // // Relative to gauge radius
+            strokeWidth: 0.035, // The thickness
+            color: '#000000' // Fill color
+        },
+        limitMax: false,     // If false, max value increases automatically if value > maxValue
+        limitMin: false,     // If true, the min value of the gauge will be fixed
+        /*colorStart: '#6FADCF',   // Colors
+        colorStop: '#8FC0DA',    // just experiment with them
+        strokeColor: '#E0E0E0',  // to see which ones work best for you*/
+        //generateGradient: true,
+        highDpiSupport: true,     // High resolution support
+        //percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+        staticLabels: {
+            font: "12px sans-serif",  // Specifies font
+            labels: [70, 100, 130],  // Print labels at these values
+            color: "#000000",  // Optional: Label text color
+            fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+        },
+        staticZones: [
+            {strokeStyle: "#30B32D", min: 60, max: 92}, // Green from 60 to 92
+            {strokeStyle: "#FFDD00", min: 92, max: 105}, // Yellow from 92 to 105
+            {strokeStyle: "#F03E3E", min: 105, max: 140} // Red from 105 to 140
+        ],
+        renderTicks: {
+            divisions: 4,
+            divWidth: 1.1,
+            divLength: 0.7,
+            divColor: "#333333",
+            subDivisions: 2,
+            subLength: 0.5,
+            subWidth: 0.6,
+            subColor: "#666666"
+        }
+    };
+    var target = document.getElementById(gaugeID); // your canvas element
+    var gauge = new Gauge(target).setOptions(opts); // create pretty gauge!
+    
+    gauge.maxValue = 140; // set max gauge value
+    gauge.setMinValue(60);  // Prefer setter over gauge.minValue = 0
+    gauge.animationSpeed = 34; // set animation speed (32 is default value)
+    gauge.set(92); // set actual value
 }
 
 $.when(
@@ -294,6 +345,10 @@ $.when(
     chartInit("electricityChart", electricityDats, electricDatsColors, electricTarget);
     chartInit("gasChart", gasDats, gasDatsColors, gasTarget);
     chartInit("waterChart", waterDats, waterDatsColors, waterTarget);
+    
+    gaugeInit("electricityGauge");
+    gaugeInit("gasGauge");
+    gaugeInit("waterGauge");
     
 })
 

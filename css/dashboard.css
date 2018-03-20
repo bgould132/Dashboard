@@ -30,8 +30,14 @@
     display: block;
 }
 
-.chart{
+.chart {
     padding: 0px 10px 0px 10px;
     margin-top: 20px;
     background-clip: content-box;
+}
+
+.gauge {
+    max-width: 100px;
+    float: right;
+    clear: both;
 }
