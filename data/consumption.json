@@ -63,7 +63,8 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 226788
+        "Billing": 226788,
+        "Passenger Traffic": 3204637
     },
     {
         "Year": "2013",
@@ -129,7 +130,8 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 224312
+        "Billing": 224312,
+        "Passenger Traffic": 2966477
     },
     {
         "Year": "2013",
@@ -195,7 +197,8 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 227562
+        "Billing": 227562,
+        "Passenger Traffic": 3593364
     },
     {
         "Year": "2013",
@@ -261,7 +264,8 @@
         "Total (Sum of Subtotal)": 38,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 260114
+        "Billing": 260114,
+        "Passenger Traffic": 3604104
     },
     {
         "Year": "2013",
@@ -327,7 +331,8 @@
         "Total (Sum of Subtotal)": 37,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 254117
+        "Billing": 254117,
+        "Passenger Traffic": 3933016
     },
     {
         "Year": "2013",
@@ -393,7 +398,8 @@
         "Total (Sum of Subtotal)": 38,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 263579
+        "Billing": 263579,
+        "Passenger Traffic": 4146797
     },
     {
         "Year": "2013",
@@ -459,7 +465,8 @@
         "Total (Sum of Subtotal)": 39,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 282580
+        "Billing": 282580,
+        "Passenger Traffic": 4176486
     },
     {
         "Year": "2013",
@@ -525,7 +532,8 @@
         "Total (Sum of Subtotal)": 38,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 278973
+        "Billing": 278973,
+        "Passenger Traffic": 4347059
     },
     {
         "Year": "2013",
@@ -591,7 +599,8 @@
         "Total (Sum of Subtotal)": 37,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 269292
+        "Billing": 269292,
+        "Passenger Traffic": 3781168
     },
     {
         "Year": "2013",
@@ -657,7 +666,8 @@
         "Total (Sum of Subtotal)": 34,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 250581
+        "Billing": 250581,
+        "Passenger Traffic": 3926441
     },
     {
         "Year": "2013",
@@ -723,7 +733,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 231200
+        "Billing": 231200,
+        "Passenger Traffic": 3466878
     },
     {
         "Year": "2013",
@@ -789,7 +800,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 31,
-        "Billing": 228292
+        "Billing": 228292,
+        "Passenger Traffic": 3814984
     },
     {
         "Year": "2014",
@@ -855,7 +867,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 228595
+        "Billing": 228595,
+        "Passenger Traffic": 3432625
     },
     {
         "Year": "2014",
@@ -921,7 +934,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 225611
+        "Billing": 225611,
+        "Passenger Traffic": 3078405
     },
     {
         "Year": "2014",
@@ -987,7 +1001,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 231479
+        "Billing": 231479,
+        "Passenger Traffic": 3765504
     },
     {
         "Year": "2014",
@@ -1053,7 +1068,8 @@
         "Total (Sum of Subtotal)": 35,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 253733
+        "Billing": 253733,
+        "Passenger Traffic": 3881893
     },
     {
         "Year": "2014",
@@ -1119,7 +1135,8 @@
         "Total (Sum of Subtotal)": 36,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 219958
+        "Billing": 219958,
+        "Passenger Traffic": 4147096
     },
     {
         "Year": "2014",
@@ -1185,7 +1202,8 @@
         "Total (Sum of Subtotal)": 40,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 294663
+        "Billing": 294663,
+        "Passenger Traffic": 4316447
     },
     {
         "Year": "2014",
@@ -1251,7 +1269,8 @@
         "Total (Sum of Subtotal)": 40,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 311763
+        "Billing": 311763,
+        "Passenger Traffic": 4506218
     },
     {
         "Year": "2014",
@@ -1317,7 +1336,8 @@
         "Total (Sum of Subtotal)": 37,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 292277
+        "Billing": 292277,
+        "Passenger Traffic": 4525926
     },
     {
         "Year": "2014",
@@ -1383,7 +1403,8 @@
         "Total (Sum of Subtotal)": 35,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 277181
+        "Billing": 277181,
+        "Passenger Traffic": 3919485
     },
     {
         "Year": "2014",
@@ -1449,7 +1470,8 @@
         "Total (Sum of Subtotal)": 34,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 266875
+        "Billing": 266875,
+        "Passenger Traffic": 4059884
     },
     {
         "Year": "2014",
@@ -1515,7 +1537,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 229710
+        "Billing": 229710,
+        "Passenger Traffic": 3629119
     },
     {
         "Year": "2014",
@@ -1581,7 +1604,8 @@
         "Total (Sum of Subtotal)": 27,
         "Normalized Days": 30,
         "Days in Billing Cycle": 34,
-        "Billing": 214739
+        "Billing": 214739,
+        "Passenger Traffic": 3856908
     },
     {
         "Year": "2015",
@@ -1647,7 +1671,8 @@
         "Total (Sum of Subtotal)": 28,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 219674
+        "Billing": 219674,
+        "Passenger Traffic": 3551072
     },
     {
         "Year": "2015",
@@ -1713,7 +1738,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 240640
+        "Billing": 240640,
+        "Passenger Traffic": 3248534
     },
     {
         "Year": "2015",
@@ -1779,7 +1805,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 224527
+        "Billing": 224527,
+        "Passenger Traffic": 4002732
     },
     {
         "Year": "2015",
@@ -1845,7 +1872,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 241186
+        "Billing": 241186,
+        "Passenger Traffic": 4022770
     },
     {
         "Year": "2015",
@@ -1911,7 +1939,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 224915
+        "Billing": 224915,
+        "Passenger Traffic": 4361802
     },
     {
         "Year": "2015",
@@ -1977,7 +2006,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 251131
+        "Billing": 251131,
+        "Passenger Traffic": 4557382
     },
     {
         "Year": "2015",
@@ -2043,7 +2073,8 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 286730
+        "Billing": 286730,
+        "Passenger Traffic": 4802431
     },
     {
         "Year": "2015",
@@ -2109,7 +2140,8 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 290662
+        "Billing": 290662,
+        "Passenger Traffic": 4797484
     },
     {
         "Year": "2015",
@@ -2175,7 +2207,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 278410
+        "Billing": 278410,
+        "Passenger Traffic": 4201882
     },
     {
         "Year": "2015",
@@ -2241,7 +2274,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 277364
+        "Billing": 277364,
+        "Passenger Traffic": 4375077
     },
     {
         "Year": "2015",
@@ -2307,7 +2341,8 @@
         "Total (Sum of Subtotal)": 26,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 231218
+        "Billing": 231218,
+        "Passenger Traffic": 4014388
     },
     {
         "Year": "2015",
@@ -2373,7 +2408,8 @@
         "Total (Sum of Subtotal)": 27,
         "Normalized Days": 30,
         "Days in Billing Cycle": 34,
-        "Billing": 236219
+        "Billing": 236219,
+        "Passenger Traffic": 4129462
     },
     {
         "Year": "2016",
@@ -2439,7 +2475,8 @@
         "Total (Sum of Subtotal)": 27,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 234171
+        "Billing": 234171,
+        "Passenger Traffic": 3749417
     },
     {
         "Year": "2016",
@@ -2505,7 +2542,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 255052
+        "Billing": 255052,
+        "Passenger Traffic": 3543751
     },
     {
         "Year": "2016",
@@ -2571,7 +2609,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 255507
+        "Billing": 255507,
+        "Passenger Traffic": 4138030
     },
     {
         "Year": "2016",
@@ -2637,7 +2676,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 274972
+        "Billing": 274972,
+        "Passenger Traffic": 4172707
     },
     {
         "Year": "2016",
@@ -2703,7 +2743,8 @@
         "Total (Sum of Subtotal)": 34,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 295271
+        "Billing": 295271,
+        "Passenger Traffic": 4574399
     },
     {
         "Year": "2016",
@@ -2769,7 +2810,8 @@
         "Total (Sum of Subtotal)": 35,
         "Normalized Days": 30,
         "Days in Billing Cycle": 31,
-        "Billing": 314437
+        "Billing": 314437,
+        "Passenger Traffic": 4922320
     },
     {
         "Year": "2016",
@@ -2835,7 +2877,8 @@
         "Total (Sum of Subtotal)": 37,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 358175
+        "Billing": 358175,
+        "Passenger Traffic": 5169044
     },
     {
         "Year": "2016",
@@ -2901,7 +2944,8 @@
         "Total (Sum of Subtotal)": 36,
         "Normalized Days": 30,
         "Days in Billing Cycle": 31,
-        "Billing": 342314
+        "Billing": 342314,
+        "Passenger Traffic": 5112250
     },
     {
         "Year": "2016",
@@ -2967,7 +3011,8 @@
         "Total (Sum of Subtotal)": 35,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 332045
+        "Billing": 332045,
+        "Passenger Traffic": 4544856
     },
     {
         "Year": "2016",
@@ -3033,7 +3078,8 @@
         "Total (Sum of Subtotal)": 36,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 344871
+        "Billing": 344871,
+        "Passenger Traffic": 4572106
     },
     {
         "Year": "2016",
@@ -3099,7 +3145,8 @@
         "Total (Sum of Subtotal)": 31,
         "Normalized Days": 30,
         "Days in Billing Cycle": 30,
-        "Billing": 303545
+        "Billing": 303545,
+        "Passenger Traffic": 4267820
     },
     {
         "Year": "2016",
@@ -3165,7 +3212,8 @@
         "Total (Sum of Subtotal)": 40,
         "Normalized Days": 30,
         "Days in Billing Cycle": 32,
-        "Billing": 385943
+        "Billing": 385943,
+        "Passenger Traffic": 4339805
     },
     {
         "Year": "2017",
@@ -3231,7 +3279,8 @@
         "Total (Sum of Subtotal)": 28,
         "Normalized Days": 30,
         "Days in Billing Cycle": 29,
-        "Billing": 261119
+        "Billing": 261119,
+        "Passenger Traffic": 3839455
     },
     {
         "Year": "2017",
@@ -3297,7 +3346,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 276863
+        "Billing": 276863,
+        "Passenger Traffic": 3481480
     },
     {
         "Year": "2017",
@@ -3363,7 +3413,8 @@
         "Total (Sum of Subtotal)": 32,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 303822
+        "Billing": 303822,
+        "Passenger Traffic": 4335634
     },
     {
         "Year": "2017",
@@ -3429,7 +3480,8 @@
         "Total (Sum of Subtotal)": 29,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 276995
+        "Billing": 276995,
+        "Passenger Traffic": 4426358
     },
     {
         "Year": "2017",
@@ -3495,7 +3547,8 @@
         "Total (Sum of Subtotal)": 38,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 366383
+        "Billing": 366383,
+        "Passenger Traffic": 4699410
     },
     {
         "Year": "2017",
@@ -3561,7 +3614,8 @@
         "Total (Sum of Subtotal)": 42,
         "Normalized Days": 30,
         "Days in Billing Cycle": 31,
-        "Billing": 412296
+        "Billing": 412296,
+        "Passenger Traffic": 5134738
     },
     {
         "Year": "2017",
@@ -3627,7 +3681,8 @@
         "Total (Sum of Subtotal)": 36,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 372166
+        "Billing": 372166,
+        "Passenger Traffic": 5497819
     },
     {
         "Year": "2017",
@@ -3693,7 +3748,8 @@
         "Total (Sum of Subtotal)": 44,
         "Normalized Days": 30,
         "Days in Billing Cycle": 33,
-        "Billing": 447115
+        "Billing": 447115,
+        "Passenger Traffic": 5518744
     },
     {
         "Year": "2017",
@@ -3759,7 +3815,8 @@
         "Total (Sum of Subtotal)": 39,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 405768
+        "Billing": 405768,
+        "Passenger Traffic": 4735251
     },
     {
         "Year": "2017",
@@ -3825,7 +3882,8 @@
         "Total (Sum of Subtotal)": 34,
         "Normalized Days": 30,
         "Days in Billing Cycle": 34,
-        "Billing": 353448
+        "Billing": 353448,
+        "Passenger Traffic": 4868218
     },
     {
         "Year": "2017",
@@ -3891,7 +3949,8 @@
         "Total (Sum of Subtotal)": 38,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 390559
+        "Billing": 390559,
+        "Passenger Traffic": 4571947
     },
     {
         "Year": "2017",
@@ -3957,6 +4016,7 @@
         "Total (Sum of Subtotal)": 33,
         "Normalized Days": 30,
         "Days in Billing Cycle": 28,
-        "Billing": 345374
+        "Billing": 345374,
+        "Passenger Traffic": 4660315
     }
 ]

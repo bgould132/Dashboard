@@ -21,7 +21,7 @@ var interpolate = require('color-interpolate);
 
 
 var i = 0, k = 0, data,
-    consumption, consumption_imported, electricity, gas, water, 
+    passengers, consumption,
     year, yearsList = ["2013", "2014", "2015", "2016", "2017"],
     monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
     // Chart variables
@@ -35,7 +35,7 @@ var i = 0, k = 0, data,
         "waterChart": "Campuswide Water (MG)"
     },
     //Constructors
-    UtilityObj,
+    AnnualObj,
     ElectricityObj,
     GasObj,
     WaterObj;
@@ -50,7 +50,7 @@ chartsMap = {
 
 // Constructors 
 // ******************************************************************//
-UtilityObj = function UtilityObj() {
+AnnualObj = function AnnualObj() {
     this["2013"] = [];
     this["2014"] = [];
     this["2015"] = [];
@@ -119,14 +119,11 @@ WaterObj = function WaterObj() {
 };
 
 data = {
-    "e": new UtilityObj(),
-    "g": new UtilityObj(),
-    "w": new UtilityObj()
+    "e": new AnnualObj(), // electricity
+    "g": new AnnualObj(), // natural gas
+    "w": new AnnualObj(), // water
+    "p": new AnnualObj() // passengers
 };
-
-electricity = new UtilityObj();
-gas = new UtilityObj();
-water = new UtilityObj();
 
 function numberWithCommas (x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -135,7 +132,7 @@ function numberWithCommas (x) {
 
 // use Charts.js to build main charts
 function chartInit(chartID) {
-    var dats = new UtilityObj(), datsColors = [], target, builtDataset = [];
+    var dats = new AnnualObj(), datsColors = [], target, builtDataset = [];
     
     switch (chartID) {
         case "electricityChart":
@@ -363,8 +360,13 @@ function gaugeInit(gaugeID) {
 $.when(
     $.getJSON('https://raw.githubusercontent.com/bgould132/Dashboard/master/data/consumption-min.json', function (consumption_imported) {
         consumption = consumption_imported;
-    })
+    })//,
+    /*$.getJSON('https://data.sfgov.org/resource/rptz-7xyh.json?$$app_token=D9qGwevI7VXD5MUOm2qa7mqhY', function (passengers_imported) {
+        passengers = passengers_imported;
+    })*/
+    
 ).then(function () {
+    //Clean consumption data
     k = 0;
     
     for (year = 0; year < yearsList.length; year++) {
@@ -394,6 +396,26 @@ $.when(
         k++;
     }
     
+    
+    //Clean passenger data
+    for (year = 0; year < yearsList.length; year++) {
+        for (i = 0; i < 12; i++) {
+            data.p[yearsList[year]][i] = 0;
+        }
+    }
+    
+    var month = 0;
+    
+    /*
+    for (i = 0; i < passengers.length; i++) {
+        year = passengers[i]["activity_period"].slice(0, 4);
+        console.log(year);
+        if (parseInt(year) >= 2013 && (passengers[i]["activity_type_code"] === "Deplaned" || passengers[i]["activity_type_code"] === "Enplaned")) {
+            month = parseInt(passengers[i]["activity_period"].slice(4, 6));
+            data.p[year][month] += parseInt(passengers[i]["passenger_count"]);
+        }
+    }
+    */
     // Generate charts
     chartInit("electricityChart");
     chartInit("gasChart");
