@@ -47,9 +47,7 @@ chartsMap = {
     "waterChart": 0
 };
 
-electricDatsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
-gasDatsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
-waterDatsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
+
 
 // Constructors 
 // ******************************************************************//
@@ -122,9 +120,9 @@ WaterObj = function WaterObj() {
 };
 
 data = {
-    e = new UtilityObj();
-    g = new UtilityObj();
-    w = new UtilityObj();
+    "e": new UtilityObj(),
+    "g": new UtilityObj(),
+    "w": new UtilityObj()
 };
 
 electricity = new UtilityObj();
@@ -134,8 +132,49 @@ gasDats = new UtilityObj();
 water = new UtilityObj();
 waterDats = new UtilityObj();
 
+electricDatsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
+gasDatsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
+waterDatsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
+
 // use Charts.js to build main charts
-function chartInit(chartID, dats, datsColors, target) {
+function chartInit(chartID) {
+    var dats = new UtilityObj(), datsColors = [], target;
+    
+    switch (chartID) {
+        case "electricityChart":
+            datsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
+            target = 0.9;
+            break;
+        case "gasChart":
+            datsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
+            target = 0.9;
+            break;
+        case "waterChart":
+            datsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
+            target = 0.9;
+            break;
+        default:
+            alert("Error getting data for charts!");
+    }
+    
+    for (year = 0; year < yearsList.length; year++) {
+        for (i = 0; i < 12; i++) {
+            switch (chartID) {
+                case "electricityChart":
+                    dats[yearsList[year]][i] = data.e[yearsList[year]][i]["Sum of Total (kWh)"];
+                    break;
+                case "gasChart":
+                    dats[yearsList[year]][i] = data.g[yearsList[year]][i]["Total (Therms)"];
+                    break;
+                case "waterChart":
+                    dats[yearsList[year]][i] = data.w[yearsList[year]][i]["Total Consumption"];
+                    break;
+                default:
+                    alert("Error getting data for charts!");
+            }
+        }
+    }
+    
     var targetDats = [], q = 0;
     
     for (var counter in dats["2013"]) {
@@ -159,52 +198,52 @@ function chartInit(chartID, dats, datsColors, target) {
             },
            {
                label: "2014",
-                data: dats["2014"],
-                lineTension: 0,
+               data: dats["2014"],
+               lineTension: 0,
                hidden: true,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[1],
-                borderWidth: 1,
-                pointBackgroundColor: datsColors[1]
+               backgroundColor: 'transparent',
+               borderColor: datsColors[1],
+               borderWidth: 1,
+               pointBackgroundColor: datsColors[1]
             },
            {
                label: "2015",
-                data: dats["2015"],
-                lineTension: 0,
+               data: dats["2015"],
+               lineTension: 0,
                hidden: true,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[2],
-                borderWidth: 1,
-                pointBackgroundColor: datsColors[2]
+               backgroundColor: 'transparent',
+               borderColor: datsColors[2],
+               borderWidth: 1,
+               pointBackgroundColor: datsColors[2]
             },
            {
                label: "2016",
-                data: dats["2016"],
-                lineTension: 0,
+               data: dats["2016"],
+               lineTension: 0,
                hidden: true,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[3],
-                borderWidth: 1,
-                pointBackgroundColor: datsColors[3]
+               backgroundColor: 'transparent',
+               borderColor: datsColors[3],
+               borderWidth: 1,
+               pointBackgroundColor: datsColors[3]
             },
            {
                label: "2017",
-                data: dats["2017"],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[4],
-                borderWidth: 1,
-                pointBackgroundColor: datsColors[4]
+               data: dats["2017"],
+               lineTension: 0,
+               backgroundColor: 'transparent',
+               borderColor: datsColors[4],
+               borderWidth: 1,
+               pointBackgroundColor: datsColors[4]
             },
            {
-                label: "Target",
-                data: targetDats,
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[5],
-                borderWidth: 1,
-                borderDash: [5,5],
-                pointBackgroundColor: datsColors[5]
+               label: "Target",
+               data: targetDats,
+               lineTension: 0,
+               backgroundColor: 'transparent',
+               borderColor: datsColors[5],
+               borderWidth: 1,
+               borderDash: [5,5],
+               pointBackgroundColor: datsColors[5]
             },]
         },
         options: {
@@ -258,12 +297,6 @@ function chartInit(chartID, dats, datsColors, target) {
         }
     });
     ctx.style.backgroundColor = "#fff";
-}
-
-// use Charts.js to destroy any chart
-function chartDestroy(chartID) {
-    var ctx = document.getElementById(chartID);
-    ctx.chart.destroy();
 }
 
 // use gauge.js to create gauge by ID
@@ -323,53 +356,40 @@ $.when(
 ).then(function () {
     k = 0;
     
-    for (var item in consumption) {
-        if (data[item.Year]) {
-            
-        } else {
-            data[item.Year] = {};
-            data[item.Year] = {
-                e = new ElectricityObj();
-                g = new GasObj();
-                w = new WaterObj();
-            };
-        }
-    }
-    
-    
     for (year = 0; year < yearsList.length; year++) {
         for (i = 0; i < 12; i++) {
             data.e[yearsList[year]][i] = new ElectricityObj;
             data.g[yearsList[year]][i] = new GasObj;
             data.w[yearsList[year]][i] = new WaterObj;
-            for (var electricItems in electricity[yearsList[year]][i]) {
-                electricity[yearsList[year]][i][electricItems] = parseInt(consumption[k][electricItems]);
-            }
-            
-            for (var gasItems in gas[yearsList[year]][i]) {
-                gas[yearsList[year]][i][gasItems] = parseInt(consumption[k][gasItems]);
-            }
-            
-            for (var waterItems in water[yearsList[year]][i]) {
-                water[yearsList[year]][i][waterItems] = parseInt(consumption[k][waterItems]);
-            }
-            
-            k++;
         }
-        
-        for (i = 0; i < 12; i++) {
-            electricityDats[yearsList[year]][i] = parseInt(electricity[yearsList[year]][i]["Sum of Total (kWh)"]);
-            gasDats[yearsList[year]][i] = parseInt(gas[yearsList[year]][i]["Total (Therms)"]);
-            waterDats[yearsList[year]][i] = parseInt(water[yearsList[year]][i]["Total Consumption"]);
-        }
-        
     }
-    
-    electricTarget = gasTarget = waterTarget = 0.9; 
-    
-    chartInit("electricityChart", electricityDats, electricDatsColors, electricTarget);
-    chartInit("gasChart", gasDats, gasDatsColors, gasTarget);
-    chartInit("waterChart", waterDats, waterDatsColors, waterTarget);
+        
+    for (i = 0; i < consumption.length; i++) {
+        var datum = consumption[i];
+        var mon = datum.Month-1;
+        
+        console.log(consumption[i].Year);
+        console.log(datum.Month);
+        console.log(mon);
+        
+        for (var eData in data.e[datum.Year][mon]) {
+            data.e[datum.Year][mon][eData] = datum[eData];
+        }
+        
+        for (var gData in data.g[datum.Year][mon]) {
+            data.g[datum.Year][mon][gData] = datum[gData];
+        }
+        
+        for (var wData in data.w[datum.Year][mon]) {
+            data.w[datum.Year][mon][wData] = datum[wData];
+        }
+        
+        k++;
+    }
+        
+    chartInit("electricityChart");
+    chartInit("gasChart");
+    chartInit("waterChart");
     
     gaugeInit("electricityGauge");
     gaugeInit("gasGauge");
@@ -384,9 +404,9 @@ function typeToggle(type) {
         chartsMap[chartsList[i]].destroy();
     }
     
-    chartInit("electricityChart", electricityDats, electricDatsColors, electricTarget);
-    chartInit("gasChart", gasDats, gasDatsColors, gasTarget);
-    chartInit("waterChart", waterDats, waterDatsColors, waterTarget);
+    chartInit("electricityChart");
+    chartInit("gasChart");
+    chartInit("waterChart");
     
     if (type === 'bar') {
         for (i = 0; i < chartsList.length; i++) {
