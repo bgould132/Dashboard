@@ -138,7 +138,7 @@ waterDatsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#8080
 
 // use Charts.js to build main charts
 function chartInit(chartID) {
-    var dats = new UtilityObj(), datsColors = [], target;
+    var dats = new UtilityObj(), datsColors = [], target, builtDataset = [];
     
     switch (chartID) {
         case "electricityChart":
@@ -173,6 +173,19 @@ function chartInit(chartID) {
                     alert("Error getting data for charts!");
             }
         }
+        builtDataset[year] = {
+            label: yearsList[year],
+            data: dats[yearsList[year]],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: datsColors[year],
+            borderWidth: 1,
+            pointBackgroundColor: datsColors[year]
+        }
+        
+        if (year != 0 && year != yearsList.length - 1) {
+            builtDataset[year].hidden = true;
+        }
     }
     
     var targetDats = [], q = 0;
@@ -182,12 +195,23 @@ function chartInit(chartID) {
         q++;
     }
     
+    builtDataset[year] = {
+        label: "Target",
+        data: targetDats,
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: datsColors[year],
+        borderWidth: 1,
+        borderDash: [5,5],
+        pointBackgroundColor: datsColors[year]
+    }
+    
     var ctx = document.getElementById(chartID);
     chartsMap[chartID] = new Chart(ctx, {
         type: chartType,
         data: {
             labels: monthList,
-            datasets: [{
+            datasets: builtDataset/*[{
                 label: "2013",
                 data: dats["2013"],
                 lineTension: 0,
@@ -244,7 +268,7 @@ function chartInit(chartID) {
                borderWidth: 1,
                borderDash: [5,5],
                pointBackgroundColor: datsColors[5]
-            },]
+            },]*/
         },
         options: {
             layout: {
