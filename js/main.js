@@ -19,7 +19,7 @@ var interpolate = require('color-interpolate);
 */
 
 
-var i = 0, k = 0,
+var i = 0, k = 0, data,
     consumption, consumption_imported, electricity, gas, water,
     electricityDats, gasDats, waterDats,
     electricDatsColors, gasDatsColors, waterDatsColors,
@@ -119,6 +119,12 @@ WaterObj = function WaterObj() {
     this["Total (Sum of Subtotal)"] = 0;
     this["Normalized Days"] = 0;
     this["Days in Billing Cycle"] = 0;
+};
+
+data = {
+    e = new UtilityObj();
+    g = new UtilityObj();
+    w = new UtilityObj();
 };
 
 electricity = new UtilityObj();
@@ -316,11 +322,26 @@ $.when(
     })
 ).then(function () {
     k = 0;
+    
+    for (var item in consumption) {
+        if (data[item.Year]) {
+            
+        } else {
+            data[item.Year] = {};
+            data[item.Year] = {
+                e = new ElectricityObj();
+                g = new GasObj();
+                w = new WaterObj();
+            };
+        }
+    }
+    
+    
     for (year = 0; year < yearsList.length; year++) {
         for (i = 0; i < 12; i++) {
-            electricity[yearsList[year]][i] = new ElectricityObj;
-            gas[yearsList[year]][i] = new GasObj;
-            water[yearsList[year]][i] = new WaterObj;
+            data.e[yearsList[year]][i] = new ElectricityObj;
+            data.g[yearsList[year]][i] = new GasObj;
+            data.w[yearsList[year]][i] = new WaterObj;
             for (var electricItems in electricity[yearsList[year]][i]) {
                 electricity[yearsList[year]][i][electricItems] = parseInt(consumption[k][electricItems]);
             }

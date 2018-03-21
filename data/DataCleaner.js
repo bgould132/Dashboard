@@ -35,7 +35,7 @@ function dataLoad() {
     for (i = 0; i < data.length; i++) {
         cleanData[i] = JSON.parse(JSON.stringify(data[i]));
         for (var k in data[i]) {
-            if (k === "Month" || k === "Year") {
+            if (k === "Year") {
                 cleanData[i][k] = cleanData[i][k];
             } else {
                 cleanData[i][k] = parseInt(data[i][k]);
