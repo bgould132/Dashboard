@@ -8,6 +8,7 @@
 /* jslint plusplus: true */
 /* eslint no-unused-vars: ["error", {"args": "none"}] */
 /* eslint no-console: ["error", {allow: ["log"]}] */
+/* eslint no-undef: ["error", {allow: ["$"]}] */
 /* eslint-env browser*/
 
 /*
@@ -20,19 +21,17 @@ var interpolate = require('color-interpolate);
 
 
 var i = 0, k = 0, data,
-    consumption, consumption_imported, electricity, gas, water,
-    electricityDats, gasDats, waterDats,
-    electricDatsColors, gasDatsColors, waterDatsColors,
-    electricTarget, gasTarget, waterTarget,
+    consumption, consumption_imported, electricity, gas, water, 
     year, yearsList = ["2013", "2014", "2015", "2016", "2017"],
     monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
     // Chart variables
     chartsMap = {},
     chartType = 'line',
+    chartData = "monthly",
     chartsList = ["electricityChart", "gasChart", "waterChart"],
     chartNames = {
         "electricityChart": "Campuswide Electricty (GWh)",
-        "gasChart": "Campuswide Natural Gas (Therms)",
+        "gasChart": "Campuswide Natural Gas (Therms) (thousands)",
         "waterChart": "Campuswide Water (MG)"
     },
     //Constructors
@@ -126,15 +125,13 @@ data = {
 };
 
 electricity = new UtilityObj();
-electricityDats = new UtilityObj();
 gas = new UtilityObj();
-gasDats = new UtilityObj();
 water = new UtilityObj();
-waterDats = new UtilityObj();
 
-electricDatsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
-gasDatsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
-waterDatsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
+function numberWithCommas (x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 // use Charts.js to build main charts
 function chartInit(chartID) {
@@ -154,20 +151,35 @@ function chartInit(chartID) {
             target = 0.9;
             break;
         default:
-            alert("Error getting data for charts!");
+            alert("Error getting colors and targets for charts!");
     }
     
     for (year = 0; year < yearsList.length; year++) {
         for (i = 0; i < 12; i++) {
             switch (chartID) {
                 case "electricityChart":
-                    dats[yearsList[year]][i] = data.e[yearsList[year]][i]["Sum of Total (kWh)"];
+                    if (chartData === "monthly") {
+                        dats[yearsList[year]][i] = data.e[yearsList[year]][i]["Sum of Total (kWh)"]/1000000;
+                    } else if (chartData === "YTD") {
+                        dats[yearsList[year]][i] = data.e[yearsList[year]][i].YTD/1000000;
+                        console.log(dats);
+                    }
                     break;
                 case "gasChart":
-                    dats[yearsList[year]][i] = data.g[yearsList[year]][i]["Total (Therms)"];
+                    if (chartData === "monthly") {
+                        dats[yearsList[year]][i] = data.g[yearsList[year]][i]["Total (Therms)"]/1000;
+                    } else if (chartData === "YTD") {
+                        dats[yearsList[year]][i] = data.g[yearsList[year]][i].YTD/1000;
+                    }
+                    
                     break;
                 case "waterChart":
-                    dats[yearsList[year]][i] = data.w[yearsList[year]][i]["Total Consumption"];
+                    if (chartData === "monthly") {
+                        dats[yearsList[year]][i] = data.w[yearsList[year]][i]["Total Consumption"];
+                    } else if (chartData === "YTD") {
+                        dats[yearsList[year]][i] = data.w[yearsList[year]][i].YTD;
+                    }
+                    
                     break;
                 default:
                     alert("Error getting data for charts!");
@@ -211,64 +223,7 @@ function chartInit(chartID) {
         type: chartType,
         data: {
             labels: monthList,
-            datasets: builtDataset/*[{
-                label: "2013",
-                data: dats["2013"],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: datsColors[0],
-                borderWidth: 1,
-                pointBackgroundColor: datsColors[0]
-            },
-           {
-               label: "2014",
-               data: dats["2014"],
-               lineTension: 0,
-               hidden: true,
-               backgroundColor: 'transparent',
-               borderColor: datsColors[1],
-               borderWidth: 1,
-               pointBackgroundColor: datsColors[1]
-            },
-           {
-               label: "2015",
-               data: dats["2015"],
-               lineTension: 0,
-               hidden: true,
-               backgroundColor: 'transparent',
-               borderColor: datsColors[2],
-               borderWidth: 1,
-               pointBackgroundColor: datsColors[2]
-            },
-           {
-               label: "2016",
-               data: dats["2016"],
-               lineTension: 0,
-               hidden: true,
-               backgroundColor: 'transparent',
-               borderColor: datsColors[3],
-               borderWidth: 1,
-               pointBackgroundColor: datsColors[3]
-            },
-           {
-               label: "2017",
-               data: dats["2017"],
-               lineTension: 0,
-               backgroundColor: 'transparent',
-               borderColor: datsColors[4],
-               borderWidth: 1,
-               pointBackgroundColor: datsColors[4]
-            },
-           {
-               label: "Target",
-               data: targetDats,
-               lineTension: 0,
-               backgroundColor: 'transparent',
-               borderColor: datsColors[5],
-               borderWidth: 1,
-               borderDash: [5,5],
-               pointBackgroundColor: datsColors[5]
-            },]*/
+            datasets: builtDataset
         },
         options: {
             layout: {
@@ -282,16 +237,15 @@ function chartInit(chartID) {
                 text: chartNames[chartID]
             },
             tooltips: {
-                // Add commas to tooltips
+                
                 callbacks: {
+                    // Add year to tooltip
                     title: function(tooltipItem, data) {
                         return tooltipItem[0].xLabel + " " + data.datasets[tooltipItem[0].datasetIndex].label;
                     },
+                    // Add commas to tooltips
                     label: function(tooltipItem, data) {
-                        // FIX THIS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                         var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                        console.log(data);
-                        console.log(tooltipItem);
                         if(parseInt(value) >= 1000){
                             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         } else {
@@ -304,13 +258,9 @@ function chartInit(chartID) {
                 yAxes: [{
                     ticks: {
                         beginAtZero: false,
-                        // Add commas tp scale bars
+                        // Add commas to scale bars
                         callback: function(value, index, values) {
-                            if(parseInt(value) >= 1000){
-                               return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                            } else {
-                               return value;
-                            }
+                            return numberWithCommas(value);
                        }     
                     }
                 }]
@@ -324,7 +274,23 @@ function chartInit(chartID) {
 }
 
 // use gauge.js to create gauge by ID
-function gaugeInit(gaugeID, dats) {
+function gaugeInit(gaugeID) {
+    var pct = 0;
+    
+    switch (gaugeID) {
+        case "electricityGauge":
+            pct = 0.9;
+            break;
+        case "gasGauge":
+            pct = 0.9;
+            break;
+        case "waterGauge":
+            pct = 0.9;
+            break;
+        default:
+            alert("Error getting data for gauge percentages!");
+    }
+    
     var opts = {
         angle: 0.0, // The span of the gauge arc
         lineWidth: 0.35, // The line thickness
@@ -344,14 +310,14 @@ function gaugeInit(gaugeID, dats) {
         //percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]],
         staticLabels: {
             font: "12px sans-serif",  // Specifies font
-            labels: [70, 100, 130],  // Print labels at these values
+            labels: [70, (100*pct), ((100-(100*pct))+100), 130],  // Print labels at these values
             color: "#000000",  // Optional: Label text color
             fractionDigits: 0  // Optional: Numerical precision. 0=round off.
         },
         staticZones: [
-            {strokeStyle: "#30B32D", min: 60, max: 92}, // Green from 60 to 92
-            {strokeStyle: "#FFDD00", min: 92, max: 105}, // Yellow from 92 to 105
-            {strokeStyle: "#F03E3E", min: 105, max: 140} // Red from 105 to 140
+            {strokeStyle: "#30B32D", min: 60, max: (100*pct)}, // Green from 60 to target
+            {strokeStyle: "#FFDD00", min: (100*pct), max: ((100-(100*pct))+100)}, // Yellow from target to 100 + (100-target)
+            {strokeStyle: "#F03E3E", min: ((100-(100*pct))+100), max: 140} // Red from 105 to 140
         ],
         renderTicks: {
             divisions: 4,
@@ -370,7 +336,28 @@ function gaugeInit(gaugeID, dats) {
     gauge.maxValue = 140; // set max gauge value
     gauge.setMinValue(60);  // Prefer setter over gauge.minValue = 0
     gauge.animationSpeed = 34; // set animation speed (32 is default value)
-    gauge.set(92); // set actual value
+   // gauge.setTextField(document.getElementByID(gaugeID + "Text"));
+    
+    var set = 0;
+    
+    for (i = 0; i < 12; i++) {
+        switch (gaugeID) {
+            case "electricityGauge":
+                set = (data.e.YTD/data.e["2013YTD"]*100);
+                break;
+            case "gasGauge":
+                set = (data.g.YTD/data.g["2013YTD"]*100);
+                break;
+            case "waterGauge":
+                set = (data.w.YTD/data.w["2013YTD"]*100);
+                break;
+            default:
+                alert("Error getting data for charts!");
+        }
+    }
+        
+    gauge.set(set); // set actual value
+    $("#" + gaugeID + "Text").text(set.toFixed(1) + "%");
 }
 
 $.when(
@@ -392,10 +379,6 @@ $.when(
         var datum = consumption[i];
         var mon = datum.Month-1;
         
-        console.log(consumption[i].Year);
-        console.log(datum.Month);
-        console.log(mon);
-        
         for (var eData in data.e[datum.Year][mon]) {
             data.e[datum.Year][mon][eData] = datum[eData];
         }
@@ -410,29 +393,119 @@ $.when(
         
         k++;
     }
-        
+    
+    // Generate charts
     chartInit("electricityChart");
     chartInit("gasChart");
     chartInit("waterChart");
     
+    // Build YTD data for charts
+    for (year = 0; year < yearsList.length; year++) {        
+        for (i = 0; i < data.e[yearsList[year]].length; i++) {            
+            if (i === 0) {
+                data.e[yearsList[year]][i].YTD = data.e[yearsList[year]][i]["Sum of Total (kWh)"];
+                data.g[yearsList[year]][i].YTD = data.g[yearsList[year]][i]["Total (Therms)"];
+                data.w[yearsList[year]][i].YTD = data.w[yearsList[year]][i]["Total Consumption"];
+            } else {
+                data.e[yearsList[year]][i].YTD = data.e[yearsList[year]][i-1].YTD + data.e[yearsList[year]][i]["Sum of Total (kWh)"];
+                
+                data.g[yearsList[year]][i].YTD = data.g[yearsList[year]][i-1].YTD + data.g[yearsList[year]][i]["Total (Therms)"];
+                
+                data.w[yearsList[year]][i].YTD = data.w[yearsList[year]][i-1].YTD + data.w[yearsList[year]][i]["Total Consumption"];
+            }
+        }
+    }
+    
+    // Generate total YTD numbers for use in cards
+    data.e.YTD = 0;
+    data.g.YTD = 0;
+    data.w.YTD = 0;
+    data.e["2013YTD"] = 0;
+    data.g["2013YTD"] = 0;
+    data.w["2013YTD"] = 0;
+    
+    year = yearsList.length - 1;
+    
+    for (i = 0; i < data.e[yearsList[year]].length; i++) {
+        data.e.YTD += data.e[yearsList[year]][i]["Sum of Total (kWh)"];
+        data.e["2013YTD"] += data.e["2013"][i]["Sum of Total (kWh)"];
+        
+        data.g.YTD += data.g[yearsList[year]][i]["Total (Therms)"];
+        data.g["2013YTD"] += data.g["2013"][i]["Total (Therms)"];
+        
+        data.w["2013YTD"] += data.w["2013"][i]["Total Consumption"];
+        data.w.YTD += data.w[yearsList[year]][i]["Total Consumption"];
+        
+    }
+    
+    // Update card text with numerical data
+    $("#eYTD").text(numberWithCommas(parseInt(data.e.YTD/1000000)) + " GWh");
+    $("#e2013YTD").text(numberWithCommas(parseInt(data.e["2013YTD"]/1000000)) + " GWh");
+    $("#eEquiv").text(numberWithCommas(parseInt((data.e["2013YTD"] - data.e.YTD)/6887.170149)) + " CA homes powered");
+    
+    $("#gYTD").text(numberWithCommas(parseInt(data.g.YTD/1000)) + " kTherms");
+    $("#g2013YTD").text(numberWithCommas(parseInt(data.g["2013YTD"]/1000)) + " kTherms");
+    $("#gEquiv").text(numberWithCommas(parseInt((data.g["2013YTD"] - data.g.YTD)*13.446/10361.7)) + " cars off the road");
+    
+    $("#wYTD").text(numberWithCommas(parseInt(data.w.YTD)) + " MG");
+    $("#w2013YTD").text(numberWithCommas(parseInt(data.w["2013YTD"])) + " MG");
+    $("#wEquiv").text(numberWithCommas(parseInt((data.w["2013YTD"] - data.w.YTD)*1000000/18250)) + " Water-Efficient Homes");
+        
+    
+    // Generate gauges
     gaugeInit("electricityGauge");
     gaugeInit("gasGauge");
     gaugeInit("waterGauge");
+    
+    $(".currentYear").text(yearsList[yearsList.length-1])
     
 })
 
 function typeToggle(type) {
     chartType = type;
     
+    destroyCharts();
+    initCharts();
+    barCheck();
+    
+    
+}
+
+function dataToggle(dat) {
+    switch (dat) {
+        case 'monthly':
+            chartData = "monthly";
+            $("#monthlyData").addClass("active");
+            $("#yearlyData").removeClass("active");
+            break;
+        case 'YTD':
+            chartData = "YTD";
+            $("#monthlyData").removeClass("active");
+            $("#yearlyData").addClass("active");
+            break;
+        default:
+            alert("Error toggling data!");
+    }
+    
+    destroyCharts();
+    initCharts();
+    barCheck();
+}
+
+function initCharts() {
+    for (var q = 0; q < chartsList.length; q++) {
+        chartInit([chartsList[q]].toString());
+    }
+}
+
+function destroyCharts() {
     for (i = 0; i < chartsList.length; i++) {
         chartsMap[chartsList[i]].destroy();
     }
-    
-    chartInit("electricityChart");
-    chartInit("gasChart");
-    chartInit("waterChart");
-    
-    if (type === 'bar') {
+}
+
+function barCheck() {
+    if (chartType === 'bar') {
         for (i = 0; i < chartsList.length; i++) {
             chartsMap[chartsList[i]].data.datasets.forEach(function (dataset) {
                 dataset.backgroundColor = dataset.borderColor;                

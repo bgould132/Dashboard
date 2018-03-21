@@ -28,13 +28,18 @@
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                         <h1 class="h2">Dashboard</h1>
                         <div class="btn-toolbar mb-2 mb-md-0">
-                          <div class="btn-group mr-2">
-                            <button class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button class="btn btn-sm btn-outline-secondary">Export</button>
-                          </div>
-                          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dataViewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="btn-group mr-2">
+                                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                                <button class="btn btn-sm btn-outline-secondary">Export</button>
+                            </div>
+                            
+                            <div class="btn-group mr-2">
+                                <button class="btn btn-sm btn-outline-secondary active" id="monthlyData" onclick="dataToggle('monthly')" aria-pressed="true">Monthly</button>
+                                <button class="btn btn-sm btn-outline-secondary" id="yearlyData" onclick="dataToggle('YTD')">Year-to-date</button>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dataViewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View as:
-                          </button>
+                            </button>
                             <div class="dropdown-menu" aria-labelledby="dataViewMenu">
                                 <button class="dropdown-item" onclick="typeToggle('line')">Line</button>
                                 <button class="dropdown-item" onclick="typeToggle('bar')">Bar</button>
@@ -47,13 +52,18 @@
                             <canvas class="chart" id="electricityChart"></canvas>
                             <div class="card mx-2 my-4 p-3">
                                 <div class="row">
-                                    <div class="col-6">
-                                            Total Electricity: <span id="eYTD"></span>
-                                        <br>2013 Electricity:
-                                        <br>Equivalent To:
+                                    <div class="col-7">
+                                        <text class="currentYear"></text>
+                                        YTD Electricity: <text id="eYTD"></text>
+                                        <br>2013 YTD Electricity: <text id="e2013YTD"></text>
+                                        <br>Savings Equivalent To: <text id="eEquiv"></text>
                                     </div>
-                                    <div class="col-6">
-                                        <canvas class="gauge" id="electricityGauge"></canvas>
+                                    <div class="col-5">
+                                        <div class="gauge">
+                                            <canvas class="gauge" id="electricityGauge"></canvas>
+                                            <text id="electricityGaugeText"></text>
+                                            <text>of 2013 YTD</text>
+                                        </div>
                                     </div>
                                 </div>                                
                             </div>
@@ -66,13 +76,18 @@
                             <canvas class="chart" id="gasChart"></canvas>
                             <div class="card mx-2 my-4 p-3">
                                 <div class="row">
-                                    <div class="col-6">                                    
-                                            Total Gas: <span id="eYTD"></span>
-                                        <br>2013 Gas:
-                                        <br>Equivalent To:
+                                    <div class="col-7">                                    
+                                        <text class="currentYear"></text>
+                                        YTD Gas: <text id="gYTD"></text>
+                                        <br>2013 YTD Gas: <text id="g2013YTD"></text>
+                                        <br>Savings Equivalent To: <text id="gEquiv"></text>
                                     </div>
-                                    <div class="col-6">
-                                        <canvas class="gauge" id="gasGauge"></canvas>
+                                    <div class="col-5">
+                                        <div class="gauge">
+                                            <canvas class="gauge" id="gasGauge"></canvas>
+                                            <text id="gasGaugeText"></text>
+                                            <text>of 2013 YTD</text>
+                                        </div>
                                     </div>
                                 </div>                                
                             </div>
@@ -85,13 +100,18 @@
                             <canvas class="chart" id="waterChart"></canvas>
                             <div class="card mx-2 my-4 p-3">
                                 <div class="row">
-                                    <div class="col-6">
-                                            Total Water: <span id="eYTD"></span>
-                                        <br>2013 Water:
-                                        <br>Equivalent To:
+                                    <div class="col-7">
+                                        <text class="currentYear"></text>
+                                        YTD Water: <text id="wYTD"></text>
+                                        <br>2013 YTD Water: <text id="w2013YTD"></text>
+                                        <br>Savings Equivalent To: <text id="wEquiv"></text>
                                     </div>
-                                    <div class="col-6">
-                                        <canvas class="gauge" id="waterGauge"></canvas>
+                                    <div class="col-5">
+                                        <div class="gauge">
+                                            <canvas class="gauge" id="waterGauge"></canvas>
+                                            <text class="gaugeText" id="waterGaugeText"></text>
+                                            <text>of 2013 YTD</text>
+                                        </div>
                                     </div>
                                 </div>                                
                             </div>
