@@ -37,7 +37,11 @@
                                 <button class="btn btn-sm btn-outline-secondary active" id="monthlyData" onclick="dataToggle('monthly')" aria-pressed="true">Monthly</button>
                                 <button class="btn btn-sm btn-outline-secondary" id="yearlyData" onclick="dataToggle('YTD')">Year-to-date</button>
                             </div>
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dataViewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="btn-group mr-2">
+                                <button class="btn btn-sm btn-outline-secondary active" id="lineChart" onclick="typeToggle('line')">Line</button>
+                                <button class="btn btn-sm btn-outline-secondary" id="barChart" onclick="typeToggle('bar')">Bar</button>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dataViewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:none">
                             View as:
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dataViewMenu">

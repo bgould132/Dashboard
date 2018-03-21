@@ -464,6 +464,19 @@ $.when(
 function typeToggle(type) {
     chartType = type;
     
+    switch (type) {
+        case 'line':
+            $("#lineChart").addClass("active");
+            $("#barChart").removeClass("active");
+            break;
+        case 'bar':
+            $("#lineChart").removeClass("active");
+            $("#barChart").addClass("active");
+            break;
+        default:
+            alert("Error toggling display!");
+    }
+    
     destroyCharts();
     initCharts();
     barCheck();
