@@ -28,6 +28,7 @@ var i = 0, k = 0, data,
     chartsMap = {},
     chartType = 'line',
     chartData = "monthly",
+    campusToggle = "campus",
     chartsList = ["electricityChart", "gasChart", "waterChart"],
     chartNames = {
         "electricityChart": "Campuswide Electricty (GWh)",
@@ -132,54 +133,74 @@ function numberWithCommas (x) {
 
 // use Charts.js to build main charts
 function chartInit(chartID) {
-    var dats = new AnnualObj(), datsColors = [], target, builtDataset = [];
+    var dats = new AnnualObj(), datsColors = [], target, builtDataset = [], denominator, datatarget;
     
-    switch (chartID) {
-        case "electricityChart":
-            datsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
-            target = 0.9;
-            break;
-        case "gasChart":
-            datsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
-            target = 0.9;
-            break;
-        case "waterChart":
-            datsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
-            target = 0.9;
-            break;
-        default:
-            alert("Error getting colors and targets for charts!");
-    }
+    if (chartID === "electricityChart") {
+        datsColors = ["#000000", "#d9f2d9", "#b3e6b3", "#66cc66", "#339933", "#808080"];
+        target = 0.9;
+    };
+    
+    if (chartID === "gasChart") {
+        datsColors = ["#000000", "#ffcccc", "#ff9999", "#ff3333", "#cc0000", "#808080"];
+        target = 0.9;
+    };
+    
+    if (chartID === "waterChart") {
+        datsColors = ["#000000", "#ccccff", "#9999ff", "#3333ff", "#0000cc", "#808080"];
+        target = 0.9;        
+    };
+    
     
     for (year = 0; year < yearsList.length; year++) {
         for (i = 0; i < 12; i++) {
-            switch (chartID) {
-                case "electricityChart":
-                    if (chartData === "monthly") {
-                        dats[yearsList[year]][i] = data.e[yearsList[year]][i]["Sum of Total (kWh)"]/1000000;
-                    } else if (chartData === "YTD") {
-                        dats[yearsList[year]][i] = data.e[yearsList[year]][i].YTD/1000000;
-                        console.log(dats);
-                    }
-                    break;
-                case "gasChart":
-                    if (chartData === "monthly") {
-                        dats[yearsList[year]][i] = data.g[yearsList[year]][i]["Total (Therms)"]/1000;
-                    } else if (chartData === "YTD") {
-                        dats[yearsList[year]][i] = data.g[yearsList[year]][i].YTD/1000;
-                    }
-                    
-                    break;
-                case "waterChart":
-                    if (chartData === "monthly") {
-                        dats[yearsList[year]][i] = data.w[yearsList[year]][i]["Total Consumption"];
-                    } else if (chartData === "YTD") {
-                        dats[yearsList[year]][i] = data.w[yearsList[year]][i].YTD;
-                    }
-                    
-                    break;
-                default:
-                    alert("Error getting data for charts!");
+            
+            if (chartID === "electricityChart") {
+                if (campusToggle === "campus") {
+                    denominator = 1000000;
+                } else if (campusToggle === "perpassenger") {
+                    denominator = data.p[yearsList[year]][i];
+                };
+                
+                if (chartData === "monthly") {
+                    datatarget = "Sum of Total (kWh)";
+                } else if (chartData === "YTD") {
+                    datatarget = "YTD";
+                };
+                
+                dats[yearsList[year]][i] = data.e[yearsList[year]][i][datatarget]/denominator;
+                
+            };
+            
+            if (chartID === "gasChart") {
+                if (campusToggle === "campus") {
+                    denominator = 1000;
+                } else if (campusToggle === "perpassenger") {
+                    denominator = (data.p[yearsList[year]][i]/99976.1);
+                };
+                
+                if (chartData === "monthly") {
+                    datatarget = "Total (Therms)";
+                } else if (chartData === "YTD") {
+                    datatarget = "YTD";
+                };
+                
+                dats[yearsList[year]][i] = data.g[yearsList[year]][i][datatarget]/denominator;
+            };
+            
+            if (chartID === "waterChart") {
+                if (campusToggle === "campus") {
+                    denominator = 1;
+                } else if (campusToggle === "perpassenger") {
+                    denominator = (data.p[yearsList[year]][i]*0.0000001);
+                };
+                
+                if (chartData === "monthly") {
+                    datatarget = "Total Consumption";
+                } else if (chartData === "YTD") {
+                    datatarget = "YTD";
+                };
+                
+                dats[yearsList[year]][i] = data.w[yearsList[year]][i][datatarget]/denominator;
             }
         }
         builtDataset[year] = {
@@ -337,36 +358,51 @@ function gaugeInit(gaugeID) {
     
     var set = 0;
     
-    for (i = 0; i < 12; i++) {
-        switch (gaugeID) {
-            case "electricityGauge":
-                set = (data.e.YTD/data.e["2013YTD"]*100);
-                break;
-            case "gasGauge":
-                set = (data.g.YTD/data.g["2013YTD"]*100);
-                break;
-            case "waterGauge":
-                set = (data.w.YTD/data.w["2013YTD"]*100);
-                break;
-            default:
-                alert("Error getting data for charts!");
-        }
+    var numerator = 1, denominator = 1, units;
+    
+    if (campusToggle === "perpassenger") {
+        numerator = data.p.YTD;
+        denominator = data.p["2013YTD"];
+        units = "PP ";
+    } else if (campusToggle === "campus") {
+        numerator = 1;
+        denominator = 1;
+        units = " ";
+    }
+    
+    switch (gaugeID) {
+        case "electricityGauge":
+            set = ((data.e.YTD/numerator)/(data.e["2013YTD"]/denominator)*100);
+            console.log(campusToggle);
+            console.log(numerator);
+            console.log(denominator);
+            break;
+        case "gasGauge":
+            set = ((data.g.YTD/numerator)/(data.g["2013YTD"]/denominator)*100);
+            break;
+        case "waterGauge":
+            set = ((data.w.YTD/numerator)/(data.w["2013YTD"]/denominator)*100);
+            break;
+        default:
+            alert("Error getting data for charts!");
     }
         
     gauge.set(set); // set actual value
-    $("#" + gaugeID + "Text").text(set.toFixed(1) + "%");
+    $("#" + gaugeID + "Text").text(set.toFixed(1) + "% of 2013 " + units + "YTD");
 }
 
 $.when(
+    // Get data saved to GitHub
     $.getJSON('https://raw.githubusercontent.com/bgould132/Dashboard/master/data/consumption-min.json', function (consumption_imported) {
         consumption = consumption_imported;
     })//,
+    // Get data from DataSF
     /*$.getJSON('https://data.sfgov.org/resource/rptz-7xyh.json?$$app_token=D9qGwevI7VXD5MUOm2qa7mqhY', function (passengers_imported) {
         passengers = passengers_imported;
     })*/
     
 ).then(function () {
-    //Clean consumption data
+    //Clean consumption & passenger data
     k = 0;
     
     for (year = 0; year < yearsList.length; year++) {
@@ -393,11 +429,14 @@ $.when(
             data.w[datum.Year][mon][wData] = datum[wData];
         }
         
+        data.p[datum.Year][mon] = consumption[i]["Passenger Traffic"];
+        
         k++;
     }
     
     
-    //Clean passenger data
+    //Clean passenger data from DataSF
+    /*
     for (year = 0; year < yearsList.length; year++) {
         for (i = 0; i < 12; i++) {
             data.p[yearsList[year]][i] = 0;
@@ -406,7 +445,7 @@ $.when(
     
     var month = 0;
     
-    /*
+    
     for (i = 0; i < passengers.length; i++) {
         year = passengers[i]["activity_period"].slice(0, 4);
         console.log(year);
@@ -416,11 +455,6 @@ $.when(
         }
     }
     */
-    // Generate charts
-    chartInit("electricityChart");
-    chartInit("gasChart");
-    chartInit("waterChart");
-    
     // Build YTD data for charts
     for (year = 0; year < yearsList.length; year++) {        
         for (i = 0; i < data.e[yearsList[year]].length; i++) {            
@@ -442,9 +476,11 @@ $.when(
     data.e.YTD = 0;
     data.g.YTD = 0;
     data.w.YTD = 0;
+    data.p.YTD = 0;
     data.e["2013YTD"] = 0;
     data.g["2013YTD"] = 0;
     data.w["2013YTD"] = 0;
+    data.p["2013YTD"] = 0;
     
     year = yearsList.length - 1;
     
@@ -458,30 +494,88 @@ $.when(
         data.w["2013YTD"] += data.w["2013"][i]["Total Consumption"];
         data.w.YTD += data.w[yearsList[year]][i]["Total Consumption"];
         
+        data.p["2013YTD"] += data.p["2013"][i];
+        data.p.YTD += data.p[yearsList[year]][i];
     }
     
-    // Update card text with numerical data
-    $("#eYTD").text(numberWithCommas(parseInt(data.e.YTD/1000000)) + " GWh");
-    $("#e2013YTD").text(numberWithCommas(parseInt(data.e["2013YTD"]/1000000)) + " GWh");
-    $("#eEquiv").text(numberWithCommas(parseInt((data.e["2013YTD"] - data.e.YTD)/6887.170149)) + " CA homes powered");
-    
-    $("#gYTD").text(numberWithCommas(parseInt(data.g.YTD/1000)) + " kTherms");
-    $("#g2013YTD").text(numberWithCommas(parseInt(data.g["2013YTD"]/1000)) + " kTherms");
-    $("#gEquiv").text(numberWithCommas(parseInt((data.g["2013YTD"] - data.g.YTD)*13.446/10361.7)) + " cars off the road");
-    
-    $("#wYTD").text(numberWithCommas(parseInt(data.w.YTD)) + " MG");
-    $("#w2013YTD").text(numberWithCommas(parseInt(data.w["2013YTD"])) + " MG");
-    $("#wEquiv").text(numberWithCommas(parseInt((data.w["2013YTD"] - data.w.YTD)*1000000/18250)) + " Water-Efficient Homes");
-        
+    // Generate charts
+    initCharts();
     
     // Generate gauges
-    gaugeInit("electricityGauge");
-    gaugeInit("gasGauge");
-    gaugeInit("waterGauge");
+    initGauges();
+    
+    // Update cards
+    textUpdate();
     
     $(".currentYear").text(yearsList[yearsList.length-1])
     
 })
+
+
+// Update card text with numerical data
+function textUpdate() {
+    if (campusToggle === "campus") {
+        $("#eYTD").text(numberWithCommas(parseInt(data.e.YTD/1000000)) + " GWh");
+        $("#e2013YTD").text(numberWithCommas(parseInt(data.e["2013YTD"]/1000000)) + " GWh");
+        $("#eEquiv").text(numberWithCommas(parseInt((data.e["2013YTD"] - data.e.YTD)/6887.170149)) + " CA homes powered");
+
+        $("#gYTD").text(numberWithCommas(parseInt(data.g.YTD/1000)) + " kTherms");
+        $("#g2013YTD").text(numberWithCommas(parseInt(data.g["2013YTD"]/1000)) + " kTherms");
+        $("#gEquiv").text(numberWithCommas(parseInt((data.g["2013YTD"] - data.g.YTD)*13.446/10361.7)) + " cars off the road");
+
+        $("#wYTD").text(numberWithCommas(parseInt(data.w.YTD)) + " MG");
+        $("#w2013YTD").text(numberWithCommas(parseInt(data.w["2013YTD"])) + " MG");
+        $("#wEquiv").text(numberWithCommas(parseInt((data.w["2013YTD"] - data.w.YTD)*1000000/18250)) + " Water-Efficient Homes");
+        
+    } else if (campusToggle === "perpassenger") {
+        
+        $("#eYTD").text(numberWithCommas(parseInt(data.e.YTD/data.p.YTD)) + " kWh PP");
+        $("#e2013YTD").text(numberWithCommas(parseInt(data.e["2013YTD"]/data.p["2013YTD"])) + " kWh PP");
+        //$("#eEquiv").text(numberWithCommas(parseInt((data.e["2013YTD"] - data.e.YTD)/6887.170149)) + " CA homes powered");
+
+        $("#gYTD").text(numberWithCommas(parseInt(data.g.YTD/data.p.YTD/99976.1)) + " BTU PP");
+        $("#g2013YTD").text(numberWithCommas(parseInt(data.g["2013YTD"]/data.p["2013YTD"]/99976.1)) + " BTU PP");
+        //$("#gEquiv").text(numberWithCommas(parseInt((data.g["2013YTD"] - data.g.YTD)*13.446/10361.7)) + " cars off the road");
+
+        $("#wYTD").text(numberWithCommas(parseInt(data.w.YTD/data.p.YTD/1000000)) + " Gal PP");
+        $("#w2013YTD").text(numberWithCommas(parseInt(data.w["2013YTD"]/data.p["2013YTD"]/1000000)) + " Gal PP");
+        //$("#wEquiv").text(numberWithCommas(parseInt((data.w["2013YTD"] - data.w.YTD)*1000000/18250)) + " Water-Efficient Homes");
+    }
+    
+    
+    
+}
+
+function toggleCampus(factor) {
+    console.log("Toggle activated!");
+    campusToggle = factor;
+    
+    if (factor === "campus") {
+        chartNames = {
+            "electricityChart": "Campuswide Electricty (GWh)",
+            "gasChart": "Campuswide Natural Gas (Therms) (thousands)",
+            "waterChart": "Campuswide Water (MG)"
+        },
+        $("#perpassenger").removeClass("active");
+        $("#campuswide").addClass("active");
+    } else {
+        chartNames = {
+            "electricityChart": "Per Passenger Electricty (kWh)",
+            "gasChart": "Per Passenger Natural Gas (BTU)",
+            "waterChart": "Per Passenger Water (Gallons)"
+        },
+        $("#campuswide").removeClass("active");
+        $("#perpassenger").addClass("active");
+    }
+    
+    destroyCharts();
+    initCharts();
+    barCheck();
+    
+    initGauges();
+    textUpdate();
+}
+
 
 function typeToggle(type) {
     chartType = type;
@@ -501,8 +595,7 @@ function typeToggle(type) {
     
     destroyCharts();
     initCharts();
-    barCheck();
-    
+    barCheck();    
     
 }
 
@@ -531,6 +624,12 @@ function initCharts() {
     for (var q = 0; q < chartsList.length; q++) {
         chartInit([chartsList[q]].toString());
     }
+}
+
+function initGauges() {
+    gaugeInit("electricityGauge");
+    gaugeInit("gasGauge");
+    gaugeInit("waterGauge");
 }
 
 function destroyCharts() {
