@@ -395,11 +395,11 @@ $.when(
     // Get data saved to GitHub
     $.getJSON('https://raw.githubusercontent.com/bgould132/Dashboard/master/data/consumption-min.json', function (consumption_imported) {
         consumption = consumption_imported;
-    })//,
+    }),
     // Get data from DataSF
-    /*$.getJSON('https://data.sfgov.org/resource/rptz-7xyh.json?$$app_token=D9qGwevI7VXD5MUOm2qa7mqhY', function (passengers_imported) {
-        passengers = passengers_imported;
-    })*/
+    $.getJSON('https://data.sfgov.org/resource/huv7-2xe3.json?$$app_token=D9qGwevI7VXD5MUOm2qa7mqhY', function (datasf_imported) {
+        datasf = datasf_imported;
+    })
     
 ).then(function () {
     //Clean consumption & passenger data
@@ -434,6 +434,19 @@ $.when(
         k++;
     }
     
+    /*
+    for (i = 0; i < datasf.length; i++) {
+        var datum = datasf[i];
+        var mon = datum.Month-1;
+        
+        if (datasf[i].owner === "Campus" || datasf[i].owner === "Commission")
+        
+        if (datasf[i].utility === "Electricity") {
+            
+        }
+        
+        for (var eData in data.e[datum.Year][])
+    }
     
     //Clean passenger data from DataSF
     /*
